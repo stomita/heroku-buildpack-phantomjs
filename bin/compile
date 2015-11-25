@@ -7,6 +7,7 @@ CACHE_DIR=$2
 
 # config
 VERSION="1.9.8"
+LP_DIR=`cd $(dirname $0); cd ..; pwd`
 
 # Buildpack URL
 ARCHIVE_NAME=phantomjs-${VERSION}-linux-x86_64
@@ -30,3 +31,9 @@ PROFILE_PATH="$BUILD_DIR/.profile.d/phantomjs.sh"
 mkdir -p $(dirname $PROFILE_PATH)
 echo 'export PATH="$PATH:$HOME/vendor/phantomjs/bin"' >> $PROFILE_PATH
 echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:vendor/phantomjs/lib"' >> $PROFILE_PATH
+
+# Export paths for future uses
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:vendor/phantomjs/lib"
+export PATH="$PATH:vendor/phantomjs/bin"
+
+export | grep -E -e ' (PATH|LD_LIBRARY_PATH)='  > "$LP_DIR/export"
