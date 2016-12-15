@@ -6,7 +6,7 @@ BUILD_DIR=$1
 CACHE_DIR=$2
 
 # config
-VERSION="2.1.1"
+VERSION="1.9.8"
 
 # Buildpack URL
 ARCHIVE_NAME=phantomjs-${VERSION}-linux-x86_64
